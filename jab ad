@@ -1,1 +1,69 @@
 nmap $target -p- --min-rate=5000 -Pn --open --reason
+
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-29 20:27 EDT
+Nmap scan report for jab.htb (10.10.11.4)
+Host is up, received user-set (0.11s latency).
+Not shown: 65481 closed tcp ports (reset), 18 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE          REASON
+53/tcp    open  domain           syn-ack ttl 127
+88/tcp    open  kerberos-sec     syn-ack ttl 127
+135/tcp   open  msrpc            syn-ack ttl 127
+139/tcp   open  netbios-ssn      syn-ack ttl 127
+389/tcp   open  ldap             syn-ack ttl 127
+445/tcp   open  microsoft-ds     syn-ack ttl 127
+464/tcp   open  kpasswd5         syn-ack ttl 127
+593/tcp   open  http-rpc-epmap   syn-ack ttl 127
+636/tcp   open  ldapssl          syn-ack ttl 127
+3268/tcp  open  globalcatLDAP    syn-ack ttl 127
+3269/tcp  open  globalcatLDAPssl syn-ack ttl 127
+5222/tcp  open  xmpp-client      syn-ack ttl 127
+5223/tcp  open  hpvirtgrp        syn-ack ttl 127
+5262/tcp  open  unknown          syn-ack ttl 127
+5263/tcp  open  unknown          syn-ack ttl 127
+5269/tcp  open  xmpp-server      syn-ack ttl 127
+5270/tcp  open  xmp              syn-ack ttl 127
+5275/tcp  open  unknown          syn-ack ttl 127
+5276/tcp  open  unknown          syn-ack ttl 127
+5985/tcp  open  wsman            syn-ack ttl 127
+7070/tcp  open  realserver       syn-ack ttl 127
+7443/tcp  open  oracleas-https   syn-ack ttl 127
+7777/tcp  open  cbt              syn-ack ttl 127
+9389/tcp  open  adws             syn-ack ttl 127
+47001/tcp open  winrm            syn-ack ttl 127
+49664/tcp open  unknown          syn-ack ttl 127
+49665/tcp open  unknown          syn-ack ttl 127
+49666/tcp open  unknown          syn-ack ttl 127
+49667/tcp open  unknown          syn-ack ttl 127
+49675/tcp open  unknown          syn-ack ttl 127
+49692/tcp open  unknown          syn-ack ttl 127
+49693/tcp open  unknown          syn-ack ttl 127
+49696/tcp open  unknown          syn-ack ttl 127
+49707/tcp open  unknown          syn-ack ttl 127
+49714/tcp open  unknown          syn-ack ttl 127
+49775/tcp open  unknown          syn-ack ttl 127
+
+Nmap done: 1 IP address (1 host up) scanned in 23.39 seconds
+
+
+
+└─# nslookup
+> server 10.10.11.4
+Default server: 10.10.11.4
+Address: 10.10.11.4#53
+> jab.htb
+Server:         10.10.11.4
+Address:        10.10.11.4#53
+
+Name:   jab.htb
+Address: 10.10.11.4
+> dc01.jab.htb
+Server:         10.10.11.4
+Address:        10.10.11.4#53
+
+Name:   dc01.jab.htb
+Address: 10.10.11.4
+> dc02.jab.htb
+Server:         10.10.11.4
+Address:        10.10.11.4#53
+
