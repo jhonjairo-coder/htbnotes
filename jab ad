@@ -1058,3 +1058,44 @@ svc_openfire$
 ┌──(root㉿kali)-[/home/kali/Documents/htb/jab]
 └─# rlwrap -cAr nc -lvnp 1919
 
+
+Notice the running version is 4.7.5, and we are allowed to upload plugins.
+
+jab Untitled7
+
+All that's left is find a way of uploading a malicious plugin. Looking for vulnerabilities I came across this POC https://github.com/miko550/CVE-2023-32315, which is linked to this CVE https://www.cvedetails.com/cve/CVE-2023-32315/
+
+Just follow the POC instructions, download the .jar plugin and upload into the "Plugins" section. Take note of the pass "123".
+
+Now navigate to server -> server settings -> management tool, and enter the pass "123". In the dropdown menu select "program home page" and take the opportunity to enumerate the system.
+
+server name 	127.0.0.1
+server port 	9090
+operating system 	Windows Server 2019 10.0 null
+Current username 	DC01$
+Current user directory 	null
+Current user working directory 	C:\Program Files\Openfire\bin
+Program relative path 	/plugins/openfire-management-tool-plugin/cmd.jsp
+Absolute program path 	C:\Program Files\Openfire\plugins\admin\webapp\plugins
+Network protocol 	HTTP/1.1
+Server software version information 	jetty/9.4.43.v20210629
+JDK version 	null
+JDK installation path 	null
+JAVA virtual machine version 	null
+JAVA virtual machine name 	Java HotSpot(TM) 64-Bit Server VM
+JAVA class path 	null
+JAVA load library search path 	c:\program files\java\jre-1.8\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps
+JAVA temporary directory 	C:\Windows\TEMP\
+JIT compiler name 	
+extended directory path 	c:\program files\java\jre-1.8\lib\ext;C:\Windows\Sun\Java\lib\ext
+Client Information
+client address 	127.0.0.1
+service machine name 	127.0.0.1
+Username 	
+Request method 	http
+Apply Secure Sockets Layer 	No
+Move to the "system command" in the dropdown menu, here you can issue commands such as a powershell –e reverse shell or whatever shell you like. After issuing your favourite reverse shell payload, a system prompt is received on the listener.
+
+jab Untitled8
+
+You are root.
